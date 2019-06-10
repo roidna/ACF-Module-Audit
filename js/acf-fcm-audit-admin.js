@@ -23,17 +23,38 @@
       });
     });
     $('body').on('click', '.acf-fcm-module-audit-results ul.groups > li > h3', function(e) {
-      $(this).parent().find('ul.fields').slideToggle();
+      // if($(this).find('i').hasClass('plus'))
+      //   $(this).find('i').removeClass('plus').addClass('minus');
+      // else
+      //   $(this).find('i').removeClass('minus').addClass('plus');
+      var $el = $(this);
+      $(this).parent().find('ul.fields').slideToggle(function() {
+        afterSlide($el);
+      });
     });
 
     $('body').on('click', '.acf-fcm-module-audit-results ul.groups > li > ul.fields li h4', function(e) {
-      $(this).parent().find('ul.modules').slideToggle();
+      // if($(this).find('i').hasClass('plus'))
+      //   $(this).find('i').removeClass('plus').addClass('minus');
+      // else
+      //   $(this).find('i').removeClass('minus').addClass('plus');
+      var $el = $(this);
+      $(this).parent().find('ul.modules').slideToggle(function() { afterSlide($el); });
     });
 
     $('body').on('click', '.acf-fcm-module-audit-results ul.groups > li > ul.fields li > ul.modules h5', function(e) {
-      $(this).parent().find('ul.urls').slideToggle();
+      var $el = $(this);
+      $(this).parent().find('ul.urls').slideToggle(function() { afterSlide($el); });
     });
 
 
   });
+
+  function afterSlide($el) {
+    console.log("after slide: ", $el);
+    if(!$el.find('i').hasClass('minus'))
+      $el.find('i').addClass('minus');
+    else
+      $el.find('i').removeClass('minus');
+  }
 })(jQuery);

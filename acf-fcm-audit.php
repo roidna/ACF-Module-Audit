@@ -117,16 +117,16 @@ if( ! class_exists('ACF_FCM_Audit') ) :
       <?php
       foreach($field_groups as $group) { ?>
           <li>
-            <h3><?php echo $group['title']; ?></h3>
+            <h3><i></i><?php echo $group['title']; ?></h3>
             <ul class="fields">
             <?php
             foreach($group['fields'] as $field_id => $field) { ?>
               <li>
-                <h4><?php echo $field['label']; ?></h4>
+                <h4><i <?php echo sizeof($field['modules'] == 1) ? ' class="minus"' : ''; ?>"></i><?php echo $field['label']; ?></h4>
                 <ul class="modules<?php echo sizeof($field['modules'] == 1) ? ' show' : ''; ?>">
               <?php foreach($field['modules'] as $module_key => $module) { ?>
                   <li>
-                    <h5<?php echo $module['count'] == 0 ? ' class="empty"' : ''; ?>><?php printf("%s (%d)", $module['label'], $module['count']); ?></h5>
+                    <h5<?php echo $module['count'] == 0 ? ' class="empty">' : '><i></i>'; ?><?php printf("%s (%d)", $module['label'], $module['count']); ?></h5>
                     <ul class="urls">
                       <?php foreach($module['urls'] as $url) { ?>
                         <li><?php printf('<a href="%s" target="_blank">%s</a>', $url, $url); ?></li>
